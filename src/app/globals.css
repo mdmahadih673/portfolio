@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+:root {
+  --background: #07080d;
+  --foreground: #f4f4f5;
+  --font-inter: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-space-grotesk: "Space Grotesk", Inter, ui-sans-serif, system-ui, sans-serif;
+  --glass: rgba(15, 23, 32, 0.72);
+  --glass-border: rgba(226, 232, 240, 0.1);
+  --accent-blue: #38bdf8;
+  --accent-cyan: #2dd4bf;
+  --accent-gold: #f59e0b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space-grotesk);
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    linear-gradient(180deg, rgba(45, 212, 191, 0.08), transparent 360px),
+    linear-gradient(135deg, #07080d 0%, #0c1118 42%, #090b10 100%);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.3);
+  color: #fff;
+}
+
+.glass-card {
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #e5e7eb 0%, #67e8f9 45%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #38bdf8, #2dd4bf, #f59e0b);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.bg-glow {
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.08), rgba(245, 158, 11, 0.04), transparent);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
